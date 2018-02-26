@@ -56,7 +56,7 @@
     "patches": {
       "drupal/core": {
          "Allow profiles to provide a base/parent profile and load them in the correct order": "https://www.drupal.org/files/issues/1356276-408--8.4.4.patch"
-      },
+      }
     }
-  },
+  }
 }
