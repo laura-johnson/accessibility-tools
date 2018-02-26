@@ -7,7 +7,7 @@
     {
       "type": "composer",
       "url": "https://packages.drupal.org/8"
-    },
+    }
   ],
   "require": {
     "composer/installers": "^1.0.20",
@@ -17,7 +17,7 @@
     "drupal/console": "~1.0",
     "drush/drush": "~8.0",
     "drupal/admin_toolbar": "1.15",
-    "drupal/pathauto": "1.0",
+    "drupal/pathauto": "1.0"
   },
   "require-dev": {
     "dealerdirect/phpcodesniffer-composer-installer": "^0.4.3",
