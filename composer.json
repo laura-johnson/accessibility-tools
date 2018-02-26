@@ -1,0 +1,62 @@
+{
+
+  "name": "laura-johnson/accessibility-tools",
+  "description": "Accessibility Tools Project",
+  "type": "drupal-profile",
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://packages.drupal.org/8"
+    },
+  ],
+  "require": {
+    "composer/installers": "^1.0.20",
+    "drupal-composer/drupal-scaffold": "^2.0.1",
+    "cweagans/composer-patches": "~1.0",
+    "drupal/core": "8.4.5",
+    "drupal/console": "~1.0",
+    "drush/drush": "~8.0",
+    "drupal/admin_toolbar": "1.15",
+    "drupal/pathauto": "1.0",
+  },
+  "require-dev": {
+    "dealerdirect/phpcodesniffer-composer-installer": "^0.4.3",
+    "squizlabs/php_codesniffer": "^2.0",
+    "drupal/coder": "^8.2",
+    "friendsofphp/php-cs-fixer": "^2.2"
+  },
+  "conflict": {
+    "drupal/drupal": "*"
+  },
+  "extra": {
+    "installer-paths": {
+      "docroot/core": [
+        "type:drupal-core"
+      ],
+      "docroot/libraries/{$name}": [
+        "type:drupal-library",
+        "type:bower-asset",
+        "type:npm-asset",
+        "type:component",
+        "enyo/dropzone"
+      ],
+      "docroot/modules/contrib/{$name}": [
+        "type:drupal-module"
+      ],
+      "docroot/profiles/contrib/{$name}": [
+        "type:drupal-profile"
+      ],
+      "docroot/themes/contrib/{$name}": [
+        "type:drupal-theme"
+      ],
+      "drush/contrib/{$name}": [
+        "type:drupal-drush"
+      ]
+    },
+    "patches": {
+      "drupal/core": {
+         "Allow profiles to provide a base/parent profile and load them in the correct order": "https://www.drupal.org/files/issues/1356276-408--8.4.4.patch"
+      },
+    }
+  },
+}

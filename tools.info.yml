@@ -1,0 +1,49 @@
+name: 'Accessibility Tools'
+type: profile
+description: 'A base profile for Accessibility Testing.'
+version: '1.0.0'
+core: 8.x
+distribution:
+  name: 'Accessibility Tools'
+dependencies:
+  - admin_toolbar
+  - block
+  - block_content
+  - breakpoint
+  - ckeditor
+  - color
+  - comment
+  - config
+  - contact
+  - contextual
+  - datetime
+  - dblog
+  - editor
+  - entity_reference
+  - entityqueue
+  - field_ui
+  - file
+  - filter
+  - help
+  - history
+  - image
+  - link
+  - menu_link_content
+  - menu_ui
+  - node
+  - options
+  - page_cache
+  - path
+  - pathauto
+  - rdf
+  - search
+  - shortcut
+  - system
+  - taxonomy
+  - text
+  - user
+  - views
+  - views_ui
+themes:
+  - bartik
+  - seven

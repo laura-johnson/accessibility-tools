@@ -1,0 +1,5 @@
+name: Accessibility Tools Testing
+type: module
+description: Accessibility successes and fails for demonstration with various tools
+core: 8.x
+package: Custom

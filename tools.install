@@ -1,0 +1,123 @@
+<?php
+
+/**
+ * @file
+ * Install and uninstall functions for the Accessibility Tools distribution.
+ */
+
+/**
+ * Helper function to enable themes and system blocks.
+ */
+function _tools_enable_system_blocks() {
+
+  $config_factory = \Drupal::configFactory();
+
+  $config_factory
+    ->getEditable('system.theme')
+    ->set('default', 'op_theme')
+    ->save();
+
+  $config_factory
+    ->getEditable('system.theme')
+    ->set('admin', 'seven')
+    ->save();
+
+  $config_factory
+    ->getEditable('system.site')
+    ->set('page.403', '/user/login')
+    ->save();
+
+  $config_factory
+    ->getEditable('node.settings')
+    ->set('use_admin_theme', TRUE)
+    ->save();
+
+  $config_factory
+    ->getEditable('block.block.seven_page_title')
+    ->set('langcode', 'en')
+    ->set('status', TRUE)
+    ->set('dependencies.theme', 'seven')
+    ->set('id', 'seven_page_title')
+    ->set('theme', 'seven')
+    ->set('region', 'header')
+    ->set('weight', 0)
+    ->set('provider', NULL)
+    ->set('plugin', 'page_title_block')
+    ->set('settings.id', 'page_title_block')
+    ->set('settings.label', 'Page title')
+    ->set('settings.provider', 'core')
+    ->set('settings.label_display', '0')
+    ->save(TRUE);
+
+  $config_factory
+    ->getEditable('block.block.seven_primary_local_tasks')
+    ->set('langcode', 'en')
+    ->set('status', TRUE)
+    ->set('dependencies.theme', 'seven')
+    ->set('id', 'seven_primary_local_tasks')
+    ->set('theme', 'seven')
+    ->set('region', 'header')
+    ->set('weight', 0)
+    ->set('provider', NULL)
+    ->set('plugin', 'local_tasks_block')
+    ->set('settings.id', 'local_tasks_block')
+    ->set('settings.label', 'Primary tabs')
+    ->set('settings.provider', 'core')
+    ->set('settings.label_display', '0')
+    ->set('settings.primary', TRUE)
+    ->set('settings.secondary', FALSE)
+    ->save(TRUE);
+
+  $config_factory
+    ->getEditable('block.block.seven_secondary_local_tasks')
+    ->set('langcode', 'en')
+    ->set('status', TRUE)
+    ->set('dependencies.theme', 'seven')
+    ->set('id', 'seven_secondary_local_tasks')
+    ->set('theme', 'seven')
+    ->set('region', 'pre_content')
+    ->set('weight', 0)
+    ->set('provider', NULL)
+    ->set('plugin', 'local_tasks_block')
+    ->set('settings.id', 'local_tasks_block')
+    ->set('settings.label', 'Secondary tabs')
+    ->set('settings.provider', 'core')
+    ->set('settings.label_display', '0')
+    ->set('settings.primary', FALSE)
+    ->set('settings.secondary', TRUE)
+    ->save(TRUE);
+
+  $config_factory
+    ->getEditable('block.block.seven_local_actions')
+    ->set('langcode', 'en')
+    ->set('status', TRUE)
+    ->set('dependencies.theme', 'seven')
+    ->set('id', 'seven_local_actions')
+    ->set('theme', 'seven')
+    ->set('region', 'content')
+    ->set('weight', -10)
+    ->set('provider', NULL)
+    ->set('plugin', 'local_actions_block')
+    ->set('settings.id', 'local_actions_block')
+    ->set('settings.label', 'Primary admin actions')
+    ->set('settings.provider', 'core')
+    ->set('settings.label_display', '0')
+    ->save(TRUE);
+}
+
+/**
+ * Implements hook_install().
+ */
+function tools_install() {
+  // Don't do anything during config sync.
+  if (\Drupal::isConfigSyncing()) {
+    return;
+  }
+
+  $config_factory = \Drupal::configFactory();
+
+  _tools_enable_system_blocks();
+  // Make field prefix empty.
+  $config_factory->getEditable('field_ui.settings')->set('field_prefix', '')->save();
+
+}
