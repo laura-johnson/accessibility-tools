@@ -32,8 +32,8 @@ install:
   # Create MySQL Database
   - mysql -e 'create database drupal;'
 
-    # Create project
-    - composer install
+  # Create project
+  - composer install
 
   # Install drupal default profile
   - drush --verbose si
