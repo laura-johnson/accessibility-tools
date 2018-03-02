@@ -35,6 +35,11 @@ install:
   # Create project
   - composer install
 
+  - rm -rf docroot/sites
+  - mv -R sites/* docroot/sites
+
+  - cd docroot
+
   # Install drupal default profile
   - drush --verbose si
 
