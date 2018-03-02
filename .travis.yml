@@ -18,7 +18,6 @@ mysql:
 before_install:
   # Make sure composer is up-to-date
   - composer self-update
-  - sudo apt-get update & /dev/null
 
 
 install:
