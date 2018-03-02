@@ -1,0 +1,56 @@
+#
+# Example .travis.yml file.
+#
+# Copy to your project and rename to .travis.yml.
+# Customize per the instructions below.
+#
+language: php
+
+php:
+  - 5.6
+
+mysql:
+  database: drupal
+  username: root
+  encoding: utf8
+
+
+before_install:
+  # Make sure composer is up-to-date
+  - composer self-update
+  - sudo apt-get update & /dev/null
+
+
+install:
+  # add composer's global bin directory to the path
+  # see: https://github.com/drush-ops/drush#install---composer
+  - export PATH="$HOME/.composer/vendor/bin:$PATH"
+
+  # Install Drush
+  - composer global require drush/drush:dev-master
+  - phpenv rehash
+
+  # Create MySQL Database
+  - mysql -e 'create database drupal;'
+
+  # Install drupal default profile
+  - drush --verbose si --db-url=mysql://root:@127.0.0.1/drupal --yes
+
+  # Create project
+  - composer install
+
+  - drush --verbose en tools_testing -y
+
+
+script:
+  # Run tests
+  # - bash bin/setup-before-tests
+  # - bin/behat
+
+
+notifications:
+  email:
+    recipients:
+      - laura.j@myplanet.com
+    on_success: always
+    on_failure: always
