@@ -36,6 +36,9 @@ install:
   - composer install
 
   - rm -rf docroot/sites
+
+  - mkdir docroot/sites
+
   - mv sites/* docroot/sites
 
   - cd docroot
