@@ -32,11 +32,11 @@ install:
   # Create MySQL Database
   - mysql -e 'create database drupal;'
 
+    # Create project
+    - composer install
+
   # Install drupal default profile
   - drush --verbose si
-
-  # Create project
-  - composer install
 
   - drush --verbose en tools_testing -y
 
