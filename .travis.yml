@@ -44,7 +44,7 @@ install:
   - cd docroot
 
   # Install drupal default profile
-  - drush --verbose si
+  - drush --verbose si -y
 
   - drush --verbose en tools_testing -y
 
