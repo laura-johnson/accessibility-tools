@@ -719,16 +719,6 @@ $settings['container_yamls'][] = __DIR__ . '/services.yml';
 # }
 
 /**
- * If on Acquia environment, include file with DB credentials.
-*/
-
-$subscription = 'tcsd8';
-
-if (file_exists('/var/www/site-php')) {
-  require("/var/www/site-php/${subscription}/${subscription}-settings.inc");
-}
-
-/**
  * Make sure Drush keeps working.
  * Modified from function drush_verify_cli()
  */
@@ -771,7 +761,7 @@ if (file_exists(__DIR__ . '/settings.local.php')) {
   include __DIR__ . '/settings.local.php';
 }
 
-$settings['install_profile'] = 'tcs';
+$settings['install_profile'] = 'tools';
 
 $databases['default']['default'] = array(
   'database' => 'drupal',

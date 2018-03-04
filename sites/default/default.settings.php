@@ -719,16 +719,6 @@ $settings['container_yamls'][] = __DIR__ . '/services.yml';
 # }
 
 /**
- * If on Acquia environment, include file with DB credentials.
-*/
-
-$subscription = 'tcs';
-
-if (file_exists('/var/www/site-php')) {
-  require("/var/www/site-php/${subscription}/${subscription}-settings.inc");
-}
-
-/**
  * Make sure Drush keeps working.
  * Modified from function drush_verify_cli()
  */
