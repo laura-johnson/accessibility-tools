@@ -30,7 +30,7 @@ install:
   - phpenv rehash
 
   # Create MySQL Database
-  - mysql -e 'create database drupal;'
+  # - mysql -e 'create database drupal;'
 
   # Create project
   - composer install
