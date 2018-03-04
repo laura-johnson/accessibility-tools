@@ -34,7 +34,7 @@ install:
 
   # Create MySQL Database
   # - mysql -e 'create database drupal;'
-  - mysql -e 'drop database if exists drupal;'
+
 
   # Create project
   - composer install
@@ -47,8 +47,10 @@ install:
 
   - cd docroot
 
+  - mysql -e 'drop database drupal;'
+
   # Install drupal default profile
-  - drush --verbose si -y
+  - drush si standard -y --db-url=mysql://drupal:drupal@localhost/drupal
 
   - drush --verbose en tools_testing -y
 

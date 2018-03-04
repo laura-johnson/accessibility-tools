@@ -765,10 +765,10 @@ $settings['install_profile'] = 'tools';
 
 $databases['default']['default'] = array(
   'database' => 'drupal',
-  'username' => 'root',
-  'password' => 'root',
+  'username' => 'drupal',
+  'password' => 'drupal',
   'prefix' => '',
-  'host' => '127.0.0.1',
+  'host' => 'localhost',
   'namespace' => 'Drupal\\Core\\Database\\Driver\\mysql',
   'driver' => 'mysql'
 );
