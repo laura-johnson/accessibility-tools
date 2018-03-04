@@ -724,22 +724,6 @@ $settings['container_yamls'][] = __DIR__ . '/services.yml';
  */
 $cli = (php_sapi_name() == 'cli');
 
-$is_local = !isset($_ENV['AH_SITE_ENVIRONMENT']);
-$is_prod = isset($_ENV['AH_PRODUCTION']) ? $_ENV['AH_PRODUCTION'] : FALSE;
-
-// Password protect non-production sites.
-if (!$cli && !$is_local) {
-  $username = $_ENV['AH_SITE_ENVIRONMENT']; //TODO: change!
-  $password = 'luxuryandunique';
-
-  if (!(isset($_SERVER['PHP_AUTH_USER']) && ($_SERVER['PHP_AUTH_USER'] == $username && $_SERVER['PHP_AUTH_PW'] == $password))) {
-    header('WWW-Authenticate: Basic realm="This site is protected"');
-    header('HTTP/1.0 401 Unauthorized');
-    // Fallback message when the user presses cancel / escape
-    echo 'Access denied';
-    exit;
-  }
-}
 
 /**
  * Put in action custom config settings only after drupal installation is completed
@@ -751,24 +735,17 @@ if (drupal_installation_attempted()) {
 }
 else {
   $config_directories[CONFIG_SYNC_DIRECTORY] = './../config/sync';
-  $config_directories['vcs'] = $app_root . '/../config/' . basename($site_path);
 }
 
-/**
- * Load local development override configuration, if available.
- */
-if (file_exists(__DIR__ . '/settings.local.php')) {
-  include __DIR__ . '/settings.local.php';
-}
-
-$settings['install_profile'] = 'tools';
+//$settings['install_profile'] = 'tools';
 
 $databases['default']['default'] = array(
   'database' => 'drupal',
   'username' => 'drupal',
   'password' => 'drupal',
   'prefix' => '',
-  'host' => 'localhost',
+  'host' => '127.0.0.1',
   'namespace' => 'Drupal\\Core\\Database\\Driver\\mysql',
-  'driver' => 'mysql'
+  'driver' => 'mysql',
+  'port' => '3306'
 );
