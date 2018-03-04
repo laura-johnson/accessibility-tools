@@ -45,7 +45,7 @@ install:
   - cd docroot
 
   # Install drupal default profile
-  - drush si standard -y --db-url=mysql://drupal:drupal@localhost/drupal
+  - drush si standard -y
 
   - drush --verbose en tools_testing -y
 
