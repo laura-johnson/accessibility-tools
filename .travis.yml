@@ -31,6 +31,7 @@ install:
 
   # Create MySQL Database
   # - mysql -e 'create database drupal;'
+  - mysql -e 'drop database if exists drupal;'
 
   # Create project
   - composer install
