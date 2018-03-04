@@ -11,7 +11,7 @@ php:
 
 mysql:
   database: drupal
-  username: drupal
+  username: root
   encoding: utf8
 
 
@@ -44,8 +44,11 @@ install:
 
   - cd docroot
 
+  # Create MySQL Database
+  - mysql -e 'create database drupal;'
+
   # Install drupal default profile
-  - drush si standard -y
+  - drush --verbose site-install --db-url=mysql://root:@127.0.0.1/drupal --yes
 
   - drush --verbose en tools_testing -y
 
