@@ -55,6 +55,8 @@ install:
   # - bash bin/setup-before-tests
   # - bin/behat
 
+# Move into core directory for phpunits benefit
+  - cd core
 
 notifications:
   email:
