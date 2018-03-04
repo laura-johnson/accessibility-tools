@@ -780,6 +780,5 @@ $databases['default']['default'] = array(
   'prefix' => '',
   'host' => '127.0.0.1',
   'namespace' => 'Drupal\\Core\\Database\\Driver\\mysql',
-  'driver' => 'mysql',
-  'unix_socket' => '/Applications/MAMP/tmp/mysql/mysql.sock',
+  'driver' => 'mysql'
 );
