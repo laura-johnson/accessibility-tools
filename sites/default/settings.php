@@ -738,7 +738,7 @@ else {
 }
 
 //$settings['install_profile'] = 'tools';
-
+/*
 $databases['default']['default'] = array(
   'database' => 'drupal',
   'username' => 'drupal',
@@ -749,3 +749,4 @@ $databases['default']['default'] = array(
   'driver' => 'mysql',
   'port' => '3306'
 );
+*/
