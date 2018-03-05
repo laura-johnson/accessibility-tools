@@ -36,11 +36,11 @@ install:
   # Create project
   - composer install
 
-  - rm -rf docroot/sites
+#  - rm -rf docroot/sites
 
-  - mkdir docroot/sites
+#  - mkdir docroot/sites
 
-  - mv sites/* docroot/sites
+#  - mv sites/* docroot/sites
 
   - cd docroot
 
