@@ -18,8 +18,6 @@ mysql:
 before_install:
   # Make sure composer is up-to-date
   - composer self-update
-  - composer require atoum/atoum
-
 
 install:
   # add composer's global bin directory to the path
@@ -28,6 +26,7 @@ install:
 
   # Install Drush
   - composer global require drush/drush:dev-master
+  - composer global require atoum/atoum:dev-master
   - phpenv rehash
 
   # Create MySQL Database
