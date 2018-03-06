@@ -62,7 +62,7 @@ install:
 
 #script:
   # Run tests
-   - vendor/bin/atoum
+  - vendor/bin/atoum
 
 # Move into core directory for phpunits benefit
   - cd core
