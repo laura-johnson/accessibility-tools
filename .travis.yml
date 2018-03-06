@@ -9,14 +9,6 @@ language: php
 php:
   - 5.6
 
-# Tweak PHP configuration.
-  # Copied from Lightning.
-  # We were getting an error where drush si is trying to send mail even though the flag to prevent that was set.
-  - echo 'max_execution_time = 120' >> drupal.php.ini;
-  - echo 'sendmail_path = /bin/true' >> drupal.php.ini;
-  - phpenv config-add drupal.php.ini
-  - phpenv rehash
-
 mysql:
   database: drupal
   username: root
@@ -39,6 +31,15 @@ install:
 
   # Create MySQL Database
   # - mysql -e 'create database drupal;'
+
+
+# Tweak PHP configuration.
+  # Copied from Lightning.
+  # We were getting an error where drush si is trying to send mail even though the flag to prevent that was set.
+  - echo 'max_execution_time = 120' >> drupal.php.ini;
+  - echo 'sendmail_path = /bin/true' >> drupal.php.ini;
+  - phpenv config-add drupal.php.ini
+  - phpenv rehash
 
 
   # Create project
