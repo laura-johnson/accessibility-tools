@@ -18,6 +18,7 @@ mysql:
 before_install:
   # Make sure composer is up-to-date
   - composer self-update
+  - composer require atoum/atoum
 
 
 install:
@@ -61,8 +62,7 @@ install:
 
 #script:
   # Run tests
-  # - bash bin/setup-before-tests
-  # - bin/behat
+   - vendor/bin/atoum
 
 # Move into core directory for phpunits benefit
   - cd core
