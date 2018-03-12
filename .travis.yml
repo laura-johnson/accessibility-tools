@@ -66,7 +66,7 @@ install:
 script:
   #- lighthouse http://localhost
   #- curl --head http://localhost
-  - chrome --headless --disable-gpu --remote-debugging-port=9222 https://www.chromestatus.com
+  - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 https://www.chromestatus.com
 
 # Move into core directory for phpunits benefit
   - cd core
