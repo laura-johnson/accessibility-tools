@@ -44,7 +44,6 @@ install:
   - echo 'sendmail_path = /bin/true' >> drupal.php.ini;
   - phpenv config-add drupal.php.ini
   - phpenv rehash
-  - echo 'Hey howarya';
 
 
   # Create project
@@ -59,7 +58,29 @@ install:
   - drush --verbose site-install --db-url=mysql://root:@127.0.0.1/drupal --yes
 
 #script:
-  # Run tests
+  $opts['key'] = 'e5ae3165457844090c749dc80f7d69d1';
+  $opts['url'] = 'http://localhost';
+
+  // open connection
+  $ch = curl_init();
+
+  // set our curl options
+  curl_setopt($ch, CURLOPT_URL, 'https://tenon.io/api/');
+  curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+  curl_setopt($ch, CURLOPT_POST, true);
+  curl_setopt($ch, CURLOPT_FAILONERROR, true);
+  curl_setopt($ch, CURLOPT_POSTFIELDS, $opts);
+
+  //execute post and get results
+  $result = curl_exec($ch);
+
+  //close connection
+  curl_close($ch);
+
+  //this convers the JSON API response to a PHP array
+  $result = json_decode($result, true);
+
+  echo $result;
 
 # Move into core directory for phpunits benefit
   - cd core
