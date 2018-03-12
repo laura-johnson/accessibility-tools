@@ -60,7 +60,7 @@ install:
 
 #script:
   #- lighthouse http://localhost
-  - curl --head http://localhost
+  - curl --head http://localhost:8080
 
 # Move into core directory for phpunits benefit
   - cd core
