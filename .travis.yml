@@ -56,7 +56,7 @@ install:
   # Install drupal default profile
   - drush --verbose site-install --db-url=mysql://root:@127.0.0.1/drupal --yes
 
-script:
+#script:
   - curl --head http://localhost
 
 # Move into core directory for phpunits benefit
