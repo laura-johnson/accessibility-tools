@@ -30,7 +30,7 @@ install:
   - PATH="$PATH:$HOME/.composer/vendor/bin"
 
   # Install Drush
-  - composer global require drush/drush:~9.0
+  - composer global require drush/drush:dev-master
   - phpenv rehash
 
   # Create MySQL Database
