@@ -49,6 +49,12 @@ install:
   # Create project
   - composer install
 
+  - rm -rf docroot/sites
+
+  - mkdir docroot/sites
+
+  - mv sites/* docroot/sites
+
   - cd docroot
 
   # Create MySQL Database
