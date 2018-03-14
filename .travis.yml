@@ -77,7 +77,7 @@ before_script:
 script:
   #- lighthouse http://localhost
   #- curl --head http://localhost
-  - chrome --headless --disable-gpu https://www.chromestatus.com
+  - google-chrome-beta --headless --no-sandbox --disable-gpu https://www.chromestatus.com
 
 # Move into core directory for phpunits benefit
   - cd core
