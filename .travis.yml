@@ -52,9 +52,12 @@ install:
   - phpenv rehash
 
   # Download ngrok
-  - npm install ngrok -g
-
-  - ngrok authtoken 6m8SwcGxnMpmGih73cZUD_hRtoZQXWDnAT1zCwq6Lt
+  - curl -sO https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip
+  - unzip $PWD/ngrok-stable-linux-amd64.zip
+  - chmod +x $PWD/ngrok
+  # Download json parser for determining ngrok tunnel
+  - curl -sO http://stedolan.github.io/jq/download/linux64/jq
+  - chmod +x $PWD/jq
 
   # Create project
   - composer install
@@ -83,10 +86,12 @@ script:
   #- curl --head http://localhost
   #- google-chrome-beta --headless --no-sandbox --disable-gpu https://www.chromestatus.com/ --remote-debugging-port=9222
 
-  - ngrok http 80
+  # Open ngrok tunnel
+  - $PWD/ngrok authtoken 6m8SwcGxnMpmGih73cZUD_hRtoZQXWDnAT1zCwq6Lt
+  - $PWD/ngrok http 3000 > /dev/null &
+  # Execute  tests using the ngrok tunnel
 
-  - curl -X POST -H Content-Type:application/x-www-form-urlencoded -H Cache-Control:no-cache -d
-              'url=http://localhost:80&key=2416d4080d01c2103b5c76e3b9487343' https://tenon.io/api/
+  - curl "https://tenon.io/api/?url=$(curl 'http://localhost:4040/api/tunnels' | $PWD/jq -r '.tunnels[1].public_url')&key=2416d4080d01c2103b5c76e3b9487343"
 
 # Move into core directory for phpunits benefit
   - cd core
