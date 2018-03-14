@@ -52,12 +52,9 @@ install:
   - phpenv rehash
 
   # Download ngrok
-  - curl -sO https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip
-  - unzip ngrok-stable-linux-amd64.zip
-  - chmod +x ngrok
+  - npm install ngrok -g
   # Download json parser for determining ngrok tunnel
-  - curl -sO http://stedolan.github.io/jq/download/linux64/jq
-  - chmod +x jq
+  - npm install node-jq --save
 
   # Create project
   - composer install
@@ -91,7 +88,7 @@ script:
   - ngrok http 3000 > /dev/null &
   # Execute  tests using the ngrok tunnel
 
-  - curl "https://tenon.io/api/?url=$(curl 'http://localhost:4040/api/tunnels' | $PWD/jq -r '.tunnels[1].public_url')&key=2416d4080d01c2103b5c76e3b9487343"
+  - curl "https://tenon.io/api/?url=$(curl 'http://localhost:4040/api/tunnels' | jq -r '.tunnels[1].public_url')&key=2416d4080d01c2103b5c76e3b9487343"
 
 # Move into core directory for phpunits benefit
   - cd core
