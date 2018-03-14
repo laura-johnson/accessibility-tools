@@ -54,6 +54,8 @@ install:
   # Download ngrok
   - npm install ngrok -g
 
+  - ngrok authtoken 6m8SwcGxnMpmGih73cZUD_hRtoZQXWDnAT1zCwq6Lt
+
   # Create project
   - composer install
 
@@ -81,10 +83,10 @@ script:
   #- curl --head http://localhost
   #- google-chrome-beta --headless --no-sandbox --disable-gpu https://www.chromestatus.com/ --remote-debugging-port=9222
 
-  - ngrok http 8080
+  - ngrok http 9001
 
   - curl -X POST -H Content-Type:application/x-www-form-urlencoded -H Cache-Control:no-cache -d
-              'url=http://localhost:8080&key=2416d4080d01c2103b5c76e3b9487343' https://tenon.io/api/
+              'url=http://localhost:9001&key=2416d4080d01c2103b5c76e3b9487343' https://tenon.io/api/
 
 # Move into core directory for phpunits benefit
   - cd core
