@@ -14,12 +14,17 @@ mysql:
   username: root
   encoding: utf8
 
-dist: trusty
+cache:
+  directories:
+    - node_modules
 addons:
-  chrome: stable
+  apt:
+    packages:
+      - google-chrome-beta
+env:
+  - GOOGLE_CHROME_BINARY=/usr/bin/google-chrome-beta
+
 before_install:
-  - # start your web application and listen on `localhost`
-  - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost &
   - composer self-update
 
 install:
@@ -63,14 +68,16 @@ install:
 
   # Install drupal default profile
   - drush --verbose site-install --db-url=mysql://root:@127.0.0.1/drupal --yes
+
 before_script:
-  - "sudo chown root /opt/google/chrome/chrome-sandbox"
-  - "sudo chmod 4755 /opt/google/chrome/chrome-sandbox"
+  - export DISPLAY=:99.0
+  - sh -e /etc/init.d/xvfb start &
+  - sleep 3
 
 script:
   #- lighthouse http://localhost
   #- curl --head http://localhost
-  - google-chrome-stable --headless --disable-gpu https://www.chromestatus.com
+  - chrome --headless --disable-gpu https://www.chromestatus.com
 
 # Move into core directory for phpunits benefit
   - cd core
