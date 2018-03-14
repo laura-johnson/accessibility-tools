@@ -52,9 +52,7 @@ install:
   - phpenv rehash
 
   # Download ngrok
-  - curl -sO https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip
-  - unzip $PWD/ngrok-stable-linux-amd64.zip
-  - chmod +x $PWD/ngrok
+  - npm install ngrok -g
 
   # Create project
   - composer install
