@@ -77,10 +77,11 @@ before_script:
 script:
   #- lighthouse http://localhost
   #- curl --head http://localhost
-  # - google-chrome-beta --headless --no-sandbox --disable-gpu http://localhost
+  - google-chrome-beta --headless --no-sandbox --disable-gpu https://www.chromestatus.com/ --remote-debugging-port=9222
+
 
   - curl -X POST -H Content-Type:application/x-www-form-urlencoded -H Cache-Control:no-cache -d
-              'url=http://localhost&key=2416d4080d01c2103b5c76e3b9487343' https://tenon.io/api/
+              'url=http://127.0.0.1:9222&key=2416d4080d01c2103b5c76e3b9487343' https://tenon.io/api/
 
 # Move into core directory for phpunits benefit
   - cd core
