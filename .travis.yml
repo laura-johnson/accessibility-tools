@@ -51,6 +51,10 @@ install:
   - phpenv config-add drupal.php.ini
   - phpenv rehash
 
+  # Download ngrok
+  - curl -sO https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip
+  - unzip $PWD/ngrok-stable-linux-amd64.zip
+  - chmod +x $PWD/ngrok
 
   # Create project
   - composer install
@@ -79,8 +83,10 @@ script:
   #- curl --head http://localhost
   #- google-chrome-beta --headless --no-sandbox --disable-gpu https://www.chromestatus.com/ --remote-debugging-port=9222
 
+  - ngrok http 8080
+
   - curl -X POST -H Content-Type:application/x-www-form-urlencoded -H Cache-Control:no-cache -d
-              'url=http://localhost:9222&key=2416d4080d01c2103b5c76e3b9487343' https://tenon.io/api/
+              'url=http://localhost:8080&key=2416d4080d01c2103b5c76e3b9487343' https://tenon.io/api/
 
 # Move into core directory for phpunits benefit
   - cd core
