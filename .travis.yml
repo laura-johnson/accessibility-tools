@@ -53,11 +53,11 @@ install:
 
   # Download ngrok
   - curl -sO https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip
-  - unzip $PWD/ngrok-stable-linux-amd64.zip
-  - chmod +x $PWD/ngrok
+  - unzip ngrok-stable-linux-amd64.zip
+  - chmod +x ngrok
   # Download json parser for determining ngrok tunnel
   - curl -sO http://stedolan.github.io/jq/download/linux64/jq
-  - chmod +x $PWD/jq
+  - chmod +x jq
 
   # Create project
   - composer install
@@ -87,8 +87,8 @@ script:
   #- google-chrome-beta --headless --no-sandbox --disable-gpu https://www.chromestatus.com/ --remote-debugging-port=9222
 
   # Open ngrok tunnel
-  - $PWD/ngrok authtoken 6m8SwcGxnMpmGih73cZUD_hRtoZQXWDnAT1zCwq6Lt
-  - $PWD/ngrok http 3000 > /dev/null &
+  - ngrok authtoken 6m8SwcGxnMpmGih73cZUD_hRtoZQXWDnAT1zCwq6Lt
+  - ngrok http 3000 > /dev/null &
   # Execute  tests using the ngrok tunnel
 
   - curl "https://tenon.io/api/?url=$(curl 'http://localhost:4040/api/tunnels' | $PWD/jq -r '.tunnels[1].public_url')&key=2416d4080d01c2103b5c76e3b9487343"
