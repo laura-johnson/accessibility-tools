@@ -88,9 +88,9 @@ script:
   - ngrok http 3000 > /dev/null &
   # Execute  tests using the ngrok tunnel
 
-  - curl -X POST -H Content-Type:application/x-www-form-urlencoded -H Cache-Control:no-cache -d "url=$(curl 'http://localhost:4040/api/tunnels' | jq -r '.tunnels[1].public_url'&key=2416d4080d01c2103b5c76e3b9487343" https://tenon.io/api/
+  - curl -X POST -H Content-Type:application/x-www-form-urlencoded -H Cache-Control:no-cache -d "url=$(curl 'http://localhost:4040/api/tunnels' | jq -r '.tunnels[1].public_url')&key=2416d4080d01c2103b5c76e3b9487343" https://tenon.io/api/
 
- 
+
 # Move into core directory for phpunits benefit
   - cd core
 
