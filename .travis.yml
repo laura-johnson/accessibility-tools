@@ -69,7 +69,7 @@ install:
   - drush --verbose site-install --db-url=mysql://root:@127.0.0.1/drupal --yes
 
 before_script:
-  - npm install -g gulp
+  - npm install gulp
 
 script:
   - gulp lighthouse
