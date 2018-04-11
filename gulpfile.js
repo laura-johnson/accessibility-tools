@@ -85,8 +85,8 @@ gulp.task('lighthouse', function () {
 
         //console.log(stderr);
 
-        var rs = fs.readFileSync('./report.json', 'utf8');
-        var response = JSON.parse(rs);
+        //var rs = fs.readFileSync('./report.json', 'utf8');
+        var response = JSON.parse(stdout);
         //gutil.log(response.reportCategories[2].audits);
 
         for (var key in response.reportCategories[2].audits) {
