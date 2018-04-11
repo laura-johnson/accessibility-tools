@@ -14,16 +14,6 @@ mysql:
   username: root
   encoding: utf8
 
-cache:
-  directories:
-    - node_modules
-addons:
-  apt:
-    packages:
-      - google-chrome-beta
-env:
-  - GOOGLE_CHROME_BINARY=/usr/bin/google-chrome-beta
-
 before_install:
   - composer self-update
 
@@ -51,11 +41,6 @@ install:
   - phpenv config-add drupal.php.ini
   - phpenv rehash
 
-  # Download ngrok
-  - npm install ngrok -g
-  # Download json parser for determining ngrok tunnel
-  - npm install node-jq --save
-
   # Create project
   - composer install
 
@@ -74,22 +59,9 @@ install:
   - drush --verbose site-install --db-url=mysql://root:@127.0.0.1/drupal --yes
 
 before_script:
-  - export DISPLAY=:99.0
-  - sh -e /etc/init.d/xvfb start &
-  - sleep 3
+  - npm install -g gulp-cli
 
-script:
-  #- lighthouse http://localhost
-  #- curl --head http://localhost
-  #- google-chrome-beta --headless --no-sandbox --disable-gpu https://www.chromestatus.com/ --remote-debugging-port=9222
-
-  # Open ngrok tunnel
-  - ngrok authtoken 6m8SwcGxnMpmGih73cZUD_hRtoZQXWDnAT1zCwq6Lt
-  - ngrok http 3000 > /dev/null &
-  # Execute  tests using the ngrok tunnel
-
-  - curl -X POST -H Content-Type:application/x-www-form-urlencoded -H Cache-Control:no-cache -d 'url=http://localhost:3000&key=2416d4080d01c2103b5c76e3b9487343' https://tenon.io/api/
-
+script: gulp lighthouse
 
 # Move into core directory for phpunits benefit
   - cd core
