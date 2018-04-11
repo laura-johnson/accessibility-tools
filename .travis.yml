@@ -26,6 +26,9 @@ env:
 
 before_install:
   - composer self-update
+  - npm install -g gulp-cli
+  - npm install -g gulp
+  - npm install gulp
 
 install:
   # add composer's global bin directory to the path
@@ -67,9 +70,6 @@ install:
 
   # Install drupal default profile
   - drush --verbose site-install --db-url=mysql://root:@127.0.0.1/drupal --yes
-
-before_script:
-  - npm install gulp
 
 script:
   - gulp lighthouse
