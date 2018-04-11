@@ -73,6 +73,8 @@ before_script:
   - npm install -g gulp-cli
   - npm install -g gulp
   - npm install gulp
+  - npm install gulp-util
+  - npm install git-guppy
 
 script:
   - gulp lighthouse
