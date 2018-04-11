@@ -78,6 +78,7 @@ before_script:
   - npm install -g lighthouse
   - npm install lighthouse
   - npm install split-json
+  - npm install fs
 
 script:
   - gulp lighthouse
