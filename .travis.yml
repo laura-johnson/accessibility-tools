@@ -79,6 +79,7 @@ before_script:
   - npm install lighthouse
   - npm install split-json
   - npm install fs
+  - npm install babel-plugin-static-fs --save-dev
 
 script:
   - gulp lighthouse
