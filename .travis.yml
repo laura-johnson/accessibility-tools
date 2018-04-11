@@ -76,12 +76,11 @@ before_script:
   - npm install gulp-util
   - npm install git-guppy
   - npm install -g lighthouse
+  - npm install lighthouse
 
 script:
   - gulp lighthouse
 
-# Move into core directory for phpunits benefit
-  - cd core
 
 notifications:
   email:
