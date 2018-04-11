@@ -26,6 +26,16 @@ env:
 
 before_install:
   - composer self-update
+  - npm install
+  - npm install -g gulp-cli
+  - npm install -g gulp
+  - npm install gulp
+  - npm install gulp-util
+  - npm install git-guppy
+  - npm install -g lighthouse
+  - npm install lighthouse
+  - npm install split-json
+  - npm install fs
 
 install:
   # add composer's global bin directory to the path
@@ -67,18 +77,6 @@ install:
 
   # Install drupal default profile
   - drush --verbose site-install --db-url=mysql://root:@127.0.0.1/drupal --yes
-
-before_script:
-  - npm install
-  - npm install -g gulp-cli
-  - npm install -g gulp
-  - npm install gulp
-  - npm install gulp-util
-  - npm install git-guppy
-  - npm install -g lighthouse
-  - npm install lighthouse
-  - npm install split-json
-  - npm install fs
 
 script:
   - gulp lighthouse
