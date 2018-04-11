@@ -14,6 +14,16 @@ mysql:
   username: root
   encoding: utf8
 
+cache:
+  directories:
+    - node_modules
+addons:
+  apt:
+    packages:
+      - google-chrome-beta
+env:
+  - GOOGLE_CHROME_BINARY=/usr/bin/google-chrome-beta
+
 before_install:
   - composer self-update
 
@@ -61,7 +71,8 @@ install:
 before_script:
   - npm install -g gulp-cli
 
-script: gulp lighthouse
+script:
+  - gulp lighthouse
 
 # Move into core directory for phpunits benefit
   - cd core
