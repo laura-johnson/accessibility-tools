@@ -70,20 +70,15 @@ install:
 
 before_script:
   - npm install
-  - npm install -g gulp-cli
-  - npm install -g gulp
   - npm install gulp
   - npm install gulp-util
   - npm install git-guppy
-  - npm install -g lighthouse
   - npm install lighthouse
   - npm install split-json
   - npm install fs
-  - npm install babel-plugin-static-fs --save-dev
 
 script:
   - gulp lighthouse
-
 
 notifications:
   email:
