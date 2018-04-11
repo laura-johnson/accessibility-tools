@@ -75,6 +75,7 @@ before_script:
   - npm install gulp
   - npm install gulp-util
   - npm install git-guppy
+  - npm install -g lighthouse
 
 script:
   - gulp lighthouse
